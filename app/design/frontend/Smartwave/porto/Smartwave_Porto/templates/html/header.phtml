@@ -6,6 +6,9 @@
         $class = 'header-newskin';
     if(isset($header_new_skin) && $header_new_skin && $header_type == 10)
         $class = 'header-new-skin';
+    $ObjectManager= \Magento\Framework\App\ObjectManager::getInstance();
+    $context = $ObjectManager->get('Magento\Framework\App\Http\Context');
+    $isLoggedIn = $context->getValue(\Magento\Customer\Model\Context::CONTEXT_AUTH);
 ?>
 <header class="page-header type<?php echo $header_type; ?> <?php echo $class;?>" >
 <?php echo $this->getChildHtml("header_customer_form_login"); ?>
@@ -360,7 +363,14 @@
                 <?php echo $this->getChildHtml("skip_to_content"); ?>
                 <?php echo $this->getChildHtml("custom_block"); ?>
                 <div class="top-links-area">
-                    <div class="top-links-icon"><a href="javascript:void(0)"><?php echo __('links');?></a></div>
+                    <div class="top-links-icon">                     
+                    <?php if ($isLoggedIn): ?>
+                    <a href="javascript:void(0)"><?php echo ('links');?></a>
+                    <?php else: ?>                    
+                    <a href="javascript:void(0)"><?php echo __('links');?></a>
+                    <?= $block->getBlockHtml('header.additional') ?>
+                    <?php endif; ?>
+                    </div>
                     <?php echo $this->getChildHtml("header.links"); ?>
                 </div>
                 <span data-action="toggle-nav" class="action nav-toggle"><span><?php /* @escapeNotVerified */ echo __('Toggle Nav') ?></span></span>
@@ -413,3 +423,37 @@
     <?php echo $this->getChildHtml("navigation.sections"); ?>
 <?php endif; ?>
 </header>
+<script>
+    require([
+        'jquery'
+    ], function ($) {
+        $(document).ready(function(){
+            var linksIcon = document.getElementsByClassName("top-links-icon");
+            linksIcon[0].addEventListener("click", showLinks);
+    
+            function showLinks()
+            {
+                if($(this).parent().children("ul.links").hasClass("show")) {
+                    $(this).parent().children("ul.links").removeClass("show");
+                } else {
+                    $(this).parent().children("ul.links").addClass("show");
+                }
+            }
+        });
+    });
+    
+</script>
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Magento_Ui/js/core/app": {
+            "components": {
+                "customer": {
+                    "component": "Magento_Customer/js/view/customer"
+                }
+            }
+        }
+    }
+}
+</script>
+    
