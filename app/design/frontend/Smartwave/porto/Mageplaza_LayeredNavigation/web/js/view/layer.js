@@ -356,7 +356,7 @@ define([
             $(".products-grid .weltpixel-quickview").each(function(){
                 $(this).appendTo($(this).parents('.product-item-info').children(".product-item-photo"));
             });
-            $("#layer-product-list img.porto-lazyload:not(.porto-lazyload-loaded)").lazyload({effect:"fadeIn"});
+            //$("#layer-product-list img.porto-lazyload:not(.porto-lazyload-loaded)").lazyload({effect:"fadeIn"});
             if ($('#layer-product-list .porto-lazyload:not(.porto-lazyload-loaded)').closest('.owl-carousel').length) {
                 $('#layer-product-list .porto-lazyload:not(.porto-lazyload-loaded)').closest('.owl-carousel').on('changed.owl.carousel', function() {
                     $(this).find('.porto-lazyload:not(.porto-lazyload-loaded)').trigger('appear');
