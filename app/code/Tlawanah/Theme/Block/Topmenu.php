@@ -254,7 +254,7 @@ class Topmenu extends \Magento\Framework\View\Element\Template
                     $html .= '<span class="cat-label cat-label-'.$sw_menu_cat_label.'">'.$this->_megamenuConfig['cat_labels'][$sw_menu_cat_label].'</span>';
                 $html .= '</a>';
                 if(count($children) > 0 || (($menu_type=="fullwidth" || $menu_type=="staticwidth") && ($menu_top_content || $menu_left_content || $menu_right_content || $menu_bottom_content))) {
-                    $html .= '<div class="level0 submenu"'.$custom_style.' style="max-width:832px;">';
+                    $html .= '<div class="level0 submenu"'.$custom_style.' style="max-width:864px;">';
                     if(($menu_type=="fullwidth" || $menu_type=="staticwidth")) {
                         $html .= '<div class="container">';
                     }

@@ -16,7 +16,7 @@
             <block class="Smartwave\Porto\Block\Template" name="porto_sidebar_sticky" template="html/sidebar_sticky.phtml" after="-"/>
         </referenceContainer>
         <referenceContainer name="page.wrapper">
-            <block class="Smartwave\Porto\Block\Template" name="porto_header" template="html/header.phtml" before="main.content">
+            <block class="Smartwave\Porto\Block\Template" name="porto_header" template="html/header.phtml" before="main.content" cacheable="false">
                 <block class="Magento\Framework\View\Element\Html\Links" name="header.links">
                     <arguments>
                         <argument name="css_class" xsi:type="string">header links</argument>
