@@ -431,7 +431,7 @@
         $(document).ready(function(){
             var linksIcon = document.getElementsByClassName("top-links-icon");
             linksIcon[0].addEventListener("click", showLinks);
-    
+            //Shows or hides the user links at frontend.
             function showLinks()
             {
                 if($(this).parent().children("ul.links").hasClass("show")) {
@@ -440,6 +440,15 @@
                     $(this).parent().children("ul.links").addClass("show");
                 }
             }
+            //Shows or hides the search field for entering data.
+            $(".search-toggle-icon").click(function(e){
+            if($(this).parent().children(".block-search").hasClass("show")) {
+                $(this).parent().children(".block-search").removeClass("show");
+            } else {
+                $(this).parent().children(".block-search").addClass("show");
+            }
+            e.stopPropagation();
+            });
         });
     });
     
